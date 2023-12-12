@@ -8,6 +8,7 @@ import './index.css';
 import App from './App';
 import Comments from './roots/Comments/Comments';
 import Error from './roots/Error/Error';
+import Profile from './roots/Profile/Profile'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Comments />,
+      },
+      {
+        path: "profile/:profileId",
+        element: <Profile />,
       },
     ],
   },
