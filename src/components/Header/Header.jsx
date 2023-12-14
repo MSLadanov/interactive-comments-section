@@ -1,7 +1,11 @@
 import React from 'react'
+import './style.css'
 
 export default function Header() {
   return (
-    <div>Header</div>
+    <div className='header'>
+      <div className='logo'></div>
+      <div className='menu'></div>
+    </div>
   )
 }
