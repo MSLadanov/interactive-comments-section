@@ -1,17 +1,26 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import axios from 'axios';
 import { Outlet } from "react-router-dom";
 
 function App() {
-  function getComments(){
-    axios.get('/data.json').then((res) => console.log(res.data)).catch((err) => console.log(err))
+  const [comments, setComments] = useState();
+  const [userData, setUserData] = useState();
+  function getData(){
+    axios.get('/data.json').then((res) => {
+      setUserData(res.data.currentUser)
+      setComments(res.data.comments)
+    }).catch((err) => console.log(err))
   }
-  getComments()
+  useEffect(() => {
+    getData()
+  }, [])
+  
   return (
     <div className="App">
       <Header />
-      <Outlet />
+      <Outlet context={[comments, setComments, userData, setUserData]}/>
     </div>
   );
 }
