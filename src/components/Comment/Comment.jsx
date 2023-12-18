@@ -24,7 +24,8 @@ export default function Comment({comment, setComments}) {
             <h5>{comment.createdAt}</h5>
           </div>
           <div className='comment-reply'>
-
+            <img src="/images/icon-reply.svg" alt="reply" />
+            <h4>Reply</h4>
           </div>
         </div>
         <div className='comment-text'>

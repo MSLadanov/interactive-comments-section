@@ -1,0 +1,18 @@
+.comment{
+    display: flex;
+}
+.comment-info{
+   display: flex;
+}
+.comment-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.comment-reply h4{
+    display: inline;
+}
+.vote-section{
+    display: flex;
+    align-items: center;
+}
