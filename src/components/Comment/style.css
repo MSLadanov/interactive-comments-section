@@ -16,3 +16,34 @@
     display: flex;
     align-items: center;
 }
+
+.comment-vote{
+ 
+}
+
+.comment-vote div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(239, 57%, 95%);
+}
+
+.comment-like{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 35px;
+    width: 40px;
+}
+
+.comment-likes{
+    color: hsl(238, 40%, 52%);
+    height: 60px;
+    width: 40px;
+}
+
+.comment-dislikes{
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    height: 35px;
+    width: 40px;
+}
