@@ -1,5 +1,9 @@
 .comment{
     display: flex;
+    background-color: hsl(0, 0%, 100%);
+    padding: 30px;
+    border-radius: 16px;
+    margin: 20px;
 }
 .comment-info{
    display: flex;
@@ -15,6 +19,7 @@
 .vote-section{
     display: flex;
     align-items: center;
+    margin-right: 30px;
 }
 
 .comment-vote{
@@ -46,4 +51,15 @@
     border-bottom-right-radius: 8px;
     height: 35px;
     width: 40px;
+}
+
+.comment-info{
+    display: flex;
+    align-items: center;
+}
+.comment-info *{
+    margin-right: 20px;
+}
+.comment-info img{
+    height: 40px;
 }
