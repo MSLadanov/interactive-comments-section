@@ -1,9 +1,11 @@
 import React from 'react'
+import Reply from '../Reply/Reply'
 import './style.css'
 
 export default function Comment({comment, setComments}) {
-  console.log(comment)
+  // console.log(comment)
   return (
+    <>
     <div className='comment'>
       <div className='vote-section'>
         <div className='comment-vote'>
@@ -33,5 +35,7 @@ export default function Comment({comment, setComments}) {
         </div>
       </div>
     </div>
+      <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments}/>)}</div>
+    </>
   )
 }
