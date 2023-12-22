@@ -1,3 +1,12 @@
+.replies-section{
+    display: flex;
+    align-items: center;
+}
+.vertical-line{
+    width: 130px;
+    height: 90%;
+    border-right: 2px solid hsl(239, 57%, 85%);
+}
 .comment{
     display: flex;
     background-color: hsl(0, 0%, 100%);

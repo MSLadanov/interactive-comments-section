@@ -35,7 +35,10 @@ export default function Comment({comment, setComments}) {
         </div>
       </div>
     </div>
-      <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments}/>)}</div>
+      <div className='replies-section'>
+        <div className='vertical-line'></div>
+        <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments}/>)}</div>
+      </div>
     </>
   )
 }
