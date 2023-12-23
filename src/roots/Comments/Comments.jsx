@@ -6,6 +6,6 @@ import './style.css'
 export default function Comments() {
   const [comments, setComments, userData, setUserData] = useOutletContext()
   if(comments){return (
-    <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} setComments={setComments}/>)}</div>
+    <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
   )}
 }

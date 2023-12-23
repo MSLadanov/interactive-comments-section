@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-export default function Reply({reply, setComments}) {
+export default function Reply({reply, setComments, userData, setUserData}) {
   return (
     <div className='comment'>
     <div className='vote-section'>
@@ -20,6 +20,7 @@ export default function Reply({reply, setComments}) {
         <div className='comment-info'>
           <img src={`/images/avatars/image-${reply.user.username}.png`} alt="user" />
           <h4>{reply.user.username}</h4>
+          {reply.user.username === userData.username && <div className='current-user'>You</div>}
           <h5>{reply.createdAt}</h5>
         </div>
         <div className='comment-reply'>

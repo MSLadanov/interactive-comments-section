@@ -2,8 +2,7 @@ import React from 'react'
 import Reply from '../Reply/Reply'
 import './style.css'
 
-export default function Comment({comment, setComments}) {
-  // console.log(comment)
+export default function Comment({comment, setComments, userData, setUserData}) {
   return (
     <>
     <div className='comment'>
@@ -23,6 +22,7 @@ export default function Comment({comment, setComments}) {
           <div className='comment-info'>
             <img src={`/images/avatars/image-${comment.user.username}.png`} alt="user" />
             <h4>{comment.user.username}</h4>
+            {comment.user.username === userData.username && <div className='current-user'>You</div>}
             <h5>{comment.createdAt}</h5>
           </div>
           <div className='comment-reply'>
@@ -37,7 +37,7 @@ export default function Comment({comment, setComments}) {
     </div>
       <div className='replies-section'>
         <div className='vertical-line'></div>
-        <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments}/>)}</div>
+        <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
       </div>
     </>
   )
