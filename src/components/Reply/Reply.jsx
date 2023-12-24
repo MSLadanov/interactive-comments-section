@@ -29,7 +29,8 @@ export default function Reply({reply, setComments, userData, setUserData}) {
         </div>
       </div>
       <div className='comment-text'>
-        {reply.content}
+        <p>{'@' + reply.replyingTo}</p>
+        <p>{' ' + reply.content}</p>
       </div>
     </div>
   </div>

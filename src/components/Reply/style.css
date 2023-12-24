@@ -1,3 +1,11 @@
 .replies {
     margin-left: 30px;
 }
+.comment-text p{
+    display: inline;
+}
+
+.comment-text :first-child{
+    font-weight: 800;
+    color: hsl(238, 40%, 52%);
+}
