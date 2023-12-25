@@ -1,7 +1,13 @@
-.comments{
+.text-field{
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: hsl(239, 57%, 95%);
     padding: 40px;
+}
+.text-field .comment-info{
+    align-items: start;
+}
+.text-field textarea{
+    resize: none;
 }
