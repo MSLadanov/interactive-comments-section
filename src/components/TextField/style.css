@@ -9,5 +9,19 @@
     align-items: start;
 }
 .text-field textarea{
+    padding: 10px 25px;
     resize: none;
+}
+
+.send-comment-btn{
+    margin-left: 20px;
+}
+
+.send-comment-btn button{
+    background-color: hsl(238, 40%, 52%);
+    border-radius: 8px;
+    border: none;
+    font-weight: bolder;
+    color:white;
+    padding: 15px 25px;
 }

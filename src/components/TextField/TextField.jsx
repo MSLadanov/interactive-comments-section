@@ -9,7 +9,7 @@ export default function TextField({userData}) {
                 <img src={`/images/avatars/image-${userData.username}.png`} alt="user" />
             </div>
             <div className="text-field-input">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="" id="" cols="30" rows="5" placeholder='Add a comment...'></textarea>
             </div>
             <div className="send-comment-btn">
                 <button type="button">SEND</button>
