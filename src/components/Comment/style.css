@@ -66,6 +66,17 @@
     display: flex;
     align-items: center;
 }
+.comment-buttons{
+    display: flex;
+}
+.comment-delete{
+    display: flex;
+    align-items: center;
+}
+.comment-reply{
+    display: flex;
+    align-items: center;
+}
 .comment-info *{
     margin-right: 20px;
 }
@@ -73,7 +84,10 @@
     height: 40px;
 }
 
-.comment-reply img{
+.comment-buttons div{
+    display: flex;
+    width: 40px;
+    justify-content: space-between;
     margin-right: 10px;
 }
 

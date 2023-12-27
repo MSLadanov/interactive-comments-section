@@ -25,9 +25,15 @@ export default function Comment({comment, setComments, userData, setUserData}) {
             {comment.user.username === userData.username && <div className='current-user'>You</div>}
             <h5>{comment.createdAt}</h5>
           </div>
+          <div className="comment-buttons">
+          <div className='comment-delete'>
+            <img src="/images/icon-delete.svg" alt="reply" />
+            <h4>Delete</h4>
+          </div>
           <div className='comment-reply'>
             <img src="/images/icon-reply.svg" alt="reply" />
             <h4>Reply</h4>
+          </div>
           </div>
         </div>
         <div className='comment-text'>
