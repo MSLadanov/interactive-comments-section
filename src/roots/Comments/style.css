@@ -1,6 +1,6 @@
 .comments{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     background-color: hsl(239, 57%, 95%);
     padding: 40px;

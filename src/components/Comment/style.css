@@ -1,9 +1,9 @@
 .replies-section{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 .vertical-line{
-    width: 130px;
+    /* width: 130px; */
     height: 90%;
     border-right: 2px solid hsl(239, 57%, 85%);
 }
@@ -12,6 +12,7 @@
     background-color: hsl(0, 0%, 100%);
     padding: 30px;
     border-radius: 16px;
+    max-width: 1200px;
     margin: 20px;
 }
 .comment-info{
@@ -86,7 +87,7 @@
 
 .comment-buttons div{
     display: flex;
-    width: 40px;
+    width: 70px;
     justify-content: space-between;
     margin-right: 10px;
 }
