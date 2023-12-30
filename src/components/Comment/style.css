@@ -4,7 +4,7 @@
 }
 .vertical-line{
     /* width: 130px; */
-    height: 90%;
+    height: 90;
     border-right: 2px solid hsl(239, 57%, 85%);
 }
 .comment{

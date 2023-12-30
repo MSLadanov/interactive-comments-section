@@ -1,6 +1,5 @@
 .text-field{
     display: flex;
-    align-items: center;
     flex-direction: column;
     background-color: hsl(239, 57%, 95%);
     padding: 40px;
