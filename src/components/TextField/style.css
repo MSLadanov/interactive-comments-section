@@ -4,10 +4,21 @@
     background-color: hsl(239, 57%, 95%);
     padding: 40px;
 }
+
+.text-field .comment{
+    justify-content: space-between !important;
+}
+
 .text-field .comment-info{
     align-items: start;
 }
+
+.text-field-input{
+    width: 80%;
+}
+
 .text-field textarea{
+    width: 80%;
     padding: 10px 25px;
     resize: none;
 }

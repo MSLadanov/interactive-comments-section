@@ -3,7 +3,7 @@
     align-self: flex-end;
 }
 .vertical-line{
-    /* width: 130px; */
+    margin: 0px 70px;
     height: 90;
     border-right: 2px solid hsl(239, 57%, 85%);
 }
@@ -12,7 +12,6 @@
     background-color: hsl(0, 0%, 100%);
     padding: 30px;
     border-radius: 16px;
-    /* max-width: 1200px; */
     margin: 20px;
 }
 .comment-info{
@@ -30,10 +29,6 @@
     display: flex;
     align-items: center;
     margin-right: 30px;
-}
-
-.comment-vote{
- 
 }
 
 .comment-vote div{
