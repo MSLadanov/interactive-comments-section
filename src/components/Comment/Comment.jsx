@@ -1,5 +1,6 @@
 import React from 'react'
 import Reply from '../Reply/Reply'
+import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 
 export default function Comment({comment, setComments, userData, setUserData}) {
@@ -26,14 +27,7 @@ export default function Comment({comment, setComments, userData, setUserData}) {
             <h5>{comment.createdAt}</h5>
           </div>
           <div className="comment-buttons">
-          <div className='comment-delete'>
-            <img src="/images/icon-delete.svg" alt="reply" />
-            <h4>Delete</h4>
-          </div>
-          <div className='comment-reply'>
-            <img src="/images/icon-reply.svg" alt="reply" />
-            <h4>Reply</h4>
-          </div>
+             <ActionButton author={comment.user.username} user={userData.username} />
           </div>
         </div>
         <div className='comment-text'>

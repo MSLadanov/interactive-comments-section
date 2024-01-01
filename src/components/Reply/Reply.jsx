@@ -1,4 +1,5 @@
 import React from 'react'
+import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 
 export default function Reply({reply, setComments, userData, setUserData}) {
@@ -23,10 +24,7 @@ export default function Reply({reply, setComments, userData, setUserData}) {
           {reply.user.username === userData.username && <div className='current-user'>You</div>}
           <h5>{reply.createdAt}</h5>
         </div>
-        <div className='comment-reply'>
-          <img src="/images/icon-reply.svg" alt="reply" />
-          <h4>Reply</h4>
-        </div>
+        <ActionButton author={reply.user.username} user={userData.username} />
       </div>
       <div className='comment-text'>
         <p>{'@' + reply.replyingTo}</p>
