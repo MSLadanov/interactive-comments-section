@@ -9,7 +9,7 @@ export default function Comments() {
   if(comments){
     return (
     <>
-    <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
+    <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
     <TextField userData={userData}/>
     </>
   )}

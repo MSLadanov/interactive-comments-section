@@ -3,7 +3,7 @@ import Reply from '../Reply/Reply'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 
-export default function Comment({comment, setComments, userData, setUserData}) {
+export default function Comment({comment, comments, setComments, userData, setUserData}) {
   return (
     <>
     <div className='comment'>
@@ -27,7 +27,7 @@ export default function Comment({comment, setComments, userData, setUserData}) {
             <h5>{comment.createdAt}</h5>
           </div>
           <div className="comment-buttons">
-             <ActionButton author={comment.user.username} user={userData.username} />
+             <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} />
           </div>
         </div>
         <div className='comment-text'>
@@ -37,7 +37,7 @@ export default function Comment({comment, setComments, userData, setUserData}) {
     </div>
       <div className='replies-section'>
         <div className='vertical-line'></div>
-        <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
+        <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
       </div>
     </>
   )

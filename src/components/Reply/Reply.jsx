@@ -2,7 +2,7 @@ import React from 'react'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 
-export default function Reply({reply, setComments, userData, setUserData}) {
+export default function Reply({reply, comments, setComments, userData, setUserData}) {
   return (
     <div className='comment'>
     <div className='vote-section'>
@@ -24,7 +24,7 @@ export default function Reply({reply, setComments, userData, setUserData}) {
           {reply.user.username === userData.username && <div className='current-user'>You</div>}
           <h5>{reply.createdAt}</h5>
         </div>
-        <ActionButton author={reply.user.username} user={userData.username} />
+        <ActionButton comment={reply} user={userData} comments={comments} setComments={setComments} />
       </div>
       <div className='comment-text'>
         <p>{'@' + reply.replyingTo}</p>
