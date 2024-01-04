@@ -1,9 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 import ReplyField from '../ReplyField/ReplyField'
 
 export default function Reply({reply, comments, setComments, userData, setUserData}) {
+  const [showReplyField, setShowReplyField] = useState(false)
   return (
     <>
     <div className='comment'>
@@ -26,7 +28,7 @@ export default function Reply({reply, comments, setComments, userData, setUserDa
             {reply.user.username === userData.username && <div className='current-user'>You</div>}
             <h5>{reply.createdAt}</h5>
           </div>
-          <ActionButton comment={reply} user={userData} comments={comments} setComments={setComments} />
+          <ActionButton comment={reply} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
         </div>
         <div className='comment-text'>
           <p>{'@' + reply.replyingTo}</p>
@@ -34,7 +36,7 @@ export default function Reply({reply, comments, setComments, userData, setUserDa
         </div>
       </div>
     </div>
-    <ReplyField userData={userData}/>
+    {showReplyField && <ReplyField userData={userData}/>}
     </>
   )
 }

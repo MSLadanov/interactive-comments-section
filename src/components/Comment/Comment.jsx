@@ -1,10 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
 import Reply from '../Reply/Reply'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 import ReplyField from '../ReplyField/ReplyField'
 
 export default function Comment({comment, comments, setComments, userData, setUserData}) {
+  const [showReplyField, setShowReplyField] = useState(false)
   return (
     <>
       <div className='comment'>
@@ -28,7 +30,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
               <h5>{comment.createdAt}</h5>
             </div>
             <div className="comment-buttons">
-              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} />
+              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
             </div>
           </div>
           <div className='comment-text'>
@@ -40,7 +42,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
         <div className='vertical-line'></div>
         <div className='replies'>{comment.replies.map((reply) => <Reply key={reply.id} reply={reply} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData} />)}</div>
       </div>
-      <ReplyField userData={userData}/>
+      {showReplyField && <ReplyField userData={userData}/>}
     </>
     
  

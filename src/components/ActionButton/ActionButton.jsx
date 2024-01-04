@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-export default function ActionButton({comment, user, comments, setComments}) {
+export default function ActionButton({comment, user, comments, setComments, setShowReplyField}) {
   function remove(){
     console.log(comment.id)
   }
@@ -11,6 +11,7 @@ export default function ActionButton({comment, user, comments, setComments}) {
   function reply(){
     console.log(comment.id)
     console.log(comment.user.username)
+    setShowReplyField(prev => !prev)
   }
   if (user.username === comment.user.username){
     return (
