@@ -1,6 +1,7 @@
 .replies-section{
     display: flex;
     align-self: flex-end;
+    width: 100%;
 }
 .vertical-line{
     margin: 0px 70px;
