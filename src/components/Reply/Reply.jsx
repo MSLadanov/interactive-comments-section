@@ -36,7 +36,7 @@ export default function Reply({reply, comments, setComments, userData, setUserDa
         </div>
       </div>
     </div>
-    {showReplyField && <ReplyField userData={userData}/>}
+    {showReplyField && <ReplyField userData={userData} receiverData={reply.user}/>}
     </>
   )
 }
