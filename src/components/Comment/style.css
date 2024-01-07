@@ -15,6 +15,9 @@
     border-radius: 16px;
     margin: 20px;
 }
+.comment-section{
+    width: 100%;
+}
 .comment-info{
    display: flex;
 }

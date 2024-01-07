@@ -29,12 +29,28 @@ export default function Comment({comment, comments, setComments, userData, setUs
               {comment.user.username === userData.username && <div className='current-user'>You</div>}
               <h5>{comment.createdAt}</h5>
             </div>
-            <div className="comment-buttons">
+            <div className="comment-actions">
               <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
             </div>
           </div>
           <div className='comment-text'>
             {comment.content}
+          </div>
+          <div className="mobile-comment-menu">
+            <div className='vote-section'>
+            <div className='comment-vote'>
+              <div className="comment-like">
+                <img src="/images/icon-plus.svg" alt="like" />
+              </div>
+              <div className="comment-likes">{comment.score}</div>
+              <div className="comment-dislikes">
+                <img src="/images/icon-minus.svg" alt="dislike" />
+              </div>
+            </div>
+          </div>
+          <div className="comment-actions">
+              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
+            </div>
           </div>
         </div>
       </div>
