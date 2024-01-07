@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/interactive-comments-section/%20/static/css/main.a468d535.css",
+    "main.js": "/interactive-comments-section/%20/static/js/main.0d4d5ccd.js",
+    "static/media/Rubik-VariableFont_wght.ttf": "/interactive-comments-section/%20/static/media/Rubik-VariableFont_wght.3a4acc0356c6ea73f2c3.ttf",
+    "index.html": "/interactive-comments-section/%20/index.html",
+    "main.a468d535.css.map": "/interactive-comments-section/%20/static/css/main.a468d535.css.map",
+    "main.0d4d5ccd.js.map": "/interactive-comments-section/%20/static/js/main.0d4d5ccd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a468d535.css",
+    "static/js/main.0d4d5ccd.js"
+  ]
+}
