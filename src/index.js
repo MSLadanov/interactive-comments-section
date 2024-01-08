@@ -12,7 +12,7 @@ import Profile from './roots/Profile/Profile'
 
 const router = createBrowserRouter([
   {
-    path: "interactive-comments-section/",
+    path: "/",
     element: <App />,
     errorElement: <Error />,
     children: [
