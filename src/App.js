@@ -19,7 +19,7 @@ function App() {
   
   return (
     <div className="App">
-      <Header context={[userData, setUserData]}/>
+      <Header userData={userData} setUserData={setUserData}/>
       <Outlet context={[comments, setComments, userData, setUserData]}/>
     </div>
   );

@@ -1,9 +1,8 @@
 import React from 'react'
-import { useOutletContext } from 'react-router-dom'
 import './style.css'
 
-export default function Header() {
-  // const [userData, setUserData] = useOutletContext()
+export default function Header({userData, setUserData}) {
+  console.log(userData)
   return (
     <div className='header'>
       <div className='logo'>
@@ -11,9 +10,9 @@ export default function Header() {
         <h1>Ravely</h1>
       </div>
       <div className='menu'>
-        <div className='comment-info'>
-          {/* <img src={`/images/avatars/image-${userData.user.username}.png`} alt="user" /> */}
-        </div>
+        {userData && <div className='comment-info'>
+          <img src={userData.image.png.slice(1)} alt="user" />
+        </div>}
       </div>
     </div>
   )
