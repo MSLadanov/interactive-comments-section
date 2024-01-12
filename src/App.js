@@ -8,7 +8,7 @@ function App() {
   const [comments, setComments] = useState();
   const [userData, setUserData] = useState();
   function getData(){
-    axios.get('/data.json').then((res) => {
+    axios.get(';;;/data.json').then((res) => {
       setUserData(res.data.currentUser)
       setComments(res.data.comments)
     }).catch((err) => console.log(err))
