@@ -2,7 +2,6 @@ import React from 'react'
 import './style.css'
 
 export default function Header({userData, setUserData}) {
-  console.log(userData)
   return (
     <div className='header'>
       <div className='logo'>
