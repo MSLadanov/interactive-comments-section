@@ -2,4 +2,7 @@ client/build/
 client/node_modules/
 client/design/
 
+api/.venv/
+
 *.md
+
