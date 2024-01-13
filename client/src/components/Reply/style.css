@@ -1,0 +1,15 @@
+.replies {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+}
+.comment-text p{
+    display: inline;
+}
+
+.comment-text :first-child{
+    font-weight: 800;
+    color: hsl(238, 40%, 52%);
+    cursor: pointer;
+}

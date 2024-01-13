@@ -1,0 +1,13 @@
+.header{
+    display: flex;
+    background-color: hsl(238, 40%, 52%);
+    justify-content: space-between;
+}
+.logo{
+    display: flex;
+    color: white;
+}
+.menu{
+    display: flex;
+    align-items: center;
+}

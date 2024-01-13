@@ -1,0 +1,45 @@
+.text-field{
+    display: flex;
+    flex-direction: column;
+    background-color: hsl(239, 57%, 95%);
+    padding: 0px 40px;
+}
+
+.text-field .comment{
+    justify-content: space-between !important;
+}
+
+.text-field .comment-info{
+    align-items: start;
+}
+
+.text-field-input{
+    width: 80%;
+}
+
+.text-field textarea{
+    border-radius: 8px;
+    width: 80%;
+    padding: 10px 25px;
+    resize: none;
+    outline-color: hsl(238, 40%, 52%);
+}
+
+.send-comment-btn{
+    margin-left: 20px;
+}
+
+.send-comment-btn button{
+    background-color: hsl(238, 40%, 52%);
+    border-radius: 8px;
+    border: none;
+    font-weight: bolder;
+    color:white;
+    padding: 15px 25px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.send-comment-btn button:hover{
+    opacity: 0.4;
+}
