@@ -14,7 +14,7 @@ function App() {
     }).catch((err) => console.log(err))
   }
   function getAPIData(){
-    axios.get('http://127.0.0.1:5000/').then((res) => {
+    axios.get('http://127.0.0.1:5000/api/v1/').then((res) => {
       console.log(res.data)
     }).catch((err) => console.log(err))
   }
