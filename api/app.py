@@ -1,10 +1,20 @@
+import os
 from flask import Flask
 from flask_cors import CORS, cross_origin
 import firebase_admin
+from firebase_admin import db
 
-cred_obj = firebase_admin.credentials.Certificate('....path to file')
-default_app = firebase_admin.initialize_app(cred_object, {
-	'databaseURL':databaseURL
+from dotenv import load_dotenv
+
+load_dotenv()
+
+credentials_Certificate = os.getenv("credentials_Certificate")
+databaseURL = os.getenv("databaseURL")
+
+ref = db.reference("/")
+cred_obj = firebase_admin.credentials.Certificate(credentials_Certificate)
+default_app = firebase_admin.initialize_app(cred_obj, {
+	'databaseURL': databaseURL
 })
 
 app = Flask(__name__)
