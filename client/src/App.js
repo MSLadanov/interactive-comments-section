@@ -9,18 +9,21 @@ function App() {
   const [userData, setUserData] = useState();
   function getMockData(){
     axios.get('/data.json').then((res) => {
+      // console.log(res.data)
       setUserData(res.data.currentUser)
       setComments(res.data.comments)
     }).catch((err) => console.log(err))
   }
   function getAPIData(){
     axios.get('http://127.0.0.1:5000/api/v1/').then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
+      setUserData(res.data.currentUser)
+      setComments(res.data.comments)
     }).catch((err) => console.log(err))
   }
   useEffect(() => {
     getAPIData()
-    getMockData()
+    // getMockData()
   }, [])
   
   return (

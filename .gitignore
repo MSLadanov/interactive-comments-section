@@ -4,5 +4,8 @@ client/design/
 
 api/.venv/
 
+api/*.json
+api/*.env
+
 *.md
 
