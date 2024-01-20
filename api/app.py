@@ -24,7 +24,12 @@ CORS(app)
 
 # print(ref.get())
 
-@app.route("/api/v1/")
-def hello_world():
+@app.route("/api/v1/comments", methods=['GET'])
+def get_comments():
     data = ref.get()
-    return data
+    return data['comments']
+
+@app.route("/api/v1/user", methods=['GET'])
+def get_user():
+    data = ref.get()
+    return data['currentUser']
