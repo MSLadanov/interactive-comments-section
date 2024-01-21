@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios';
 import './style.css'
 
 export default function TextField({userData}) {
@@ -27,6 +28,11 @@ export default function TextField({userData}) {
   function addComment(){
     setComment({...comment, createdAt: getFormattedDate()})
     console.log(comment)
+    axios.post('http://127.0.0.1:5000/api/v1/comment',{
+      ...comment
+    }).then((res) => {
+      console.log(res.data)
+    }).catch((err) => console.log(err))
   }
   return (
     <div className='text-field'>
