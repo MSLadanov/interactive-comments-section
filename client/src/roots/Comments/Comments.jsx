@@ -6,11 +6,11 @@ import TextField from '../../components/TextField/TextField'
 
 export default function Comments() {
   const [comments, setComments, userData, setUserData] = useOutletContext()
-  if(comments){
+  if(userData){
     return (
     <>
-    <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>
-    <TextField userData={userData}/>
+      {comments && <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>}
+      <TextField userData={userData}/>
     </>
   )}
 }
