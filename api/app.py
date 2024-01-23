@@ -27,10 +27,13 @@ def get_comments():
 
 @app.route("/api/v1/comment", methods=['POST'])
 def add_comment():
-    data = request.json
-    ref.child('comments').push(data)
+    comment_ref = ref.child('comments')
+    req = request.json
+    data = ref.get()['comments']
+    data.append(req)
+    comment_ref.set(data)
     return {
-        'status': 'ok!'
+        'status' : 'ok!',
     }
 
 
