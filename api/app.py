@@ -36,6 +36,13 @@ def add_comment():
         'status' : 'ok!',
     }
 
+@app.route("/api/v1/reply", methods=['POST'])
+def add_reply():
+    return {
+        'status' : 'ok!',
+    }
+
+
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
