@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import './style.css'
 
-export default function ReplyField({userData, receiverData}) {
+export default function ReplyField({id, userData, receiverData}) {
     function getFormattedDate(){
         const today = new Date()
         const yyyy = today.getFullYear()
@@ -13,6 +13,7 @@ export default function ReplyField({userData, receiverData}) {
         return dd + '.' + mm + '.' + yyyy
       }
       const [reply, setReply] = useState({
+        id,
         content: '',
         score: 0,
         createdAt: getFormattedDate(),

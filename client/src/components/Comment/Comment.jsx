@@ -57,7 +57,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
       <div className='replies-section'>
         <div className='vertical-line'></div>
         <div className='replies'>
-          {showReplyField && <ReplyField className='replies' userData={userData} receiverData={comment.user}/>}
+          {showReplyField && <ReplyField className='replies' id={comment.id} userData={userData} receiverData={comment.user}/>}
           {comment.replies && comment.replies.map((reply) => <Reply key={reply.id} reply={reply} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData} />)}
         </div>
       </div>
