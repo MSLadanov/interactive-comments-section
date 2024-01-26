@@ -39,8 +39,10 @@ def add_comment():
 @app.route("/api/v1/reply", methods=['POST'])
 def add_reply():
     req = request.json
-    data = ref.get()['comments'][req['id']]
-    return data
+    data = ref.get()['comments']
+    print(req['id'])
+    print(data[req['id']])
+    return req
 
 
 
