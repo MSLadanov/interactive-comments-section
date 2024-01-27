@@ -42,7 +42,7 @@ export default function ReplyField({id, userData, receiverData}) {
                 <img src={`/images/avatars/image-${userData.username}.png`} alt="user" />
             </div>
             <div className="text-field-input">
-                <textarea name="" id="" cols="30" rows="5" placeholder='Add a reply...' defaultValue={'@' + receiverData.username} onChange={(e) => setReply({...reply, content: e.target.value}) }></textarea>
+                <textarea name="" id="" cols="30" rows="5" placeholder='Add a reply...' onChange={(e) => setReply({...reply, content: e.target.value}) }></textarea>
             </div>
             <div className="send-comment-btn">
                 <button type="button" onClick={() => addReply()}>REPLY</button>

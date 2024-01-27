@@ -38,12 +38,20 @@ def add_comment():
 
 @app.route("/api/v1/reply", methods=['POST'])
 def add_reply():
+    comment_ref = ref.child('comments')
     req = request.json
     data = ref.get()['comments']
-    print(req['id'])
-    print(data[req['id']])
-    return req
-
+    comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
+    key_to_check = 'replies'
+    if data[comment_index].get(key_to_check) is not None:
+        print(f"Key '{key_to_check}' exists.")
+        data[comment_index]['replies'].append(req)
+    else:
+        print(f"Key '{key_to_check}' does not exist.")
+        data[comment_index].update({'replies':[]}) 
+        data[comment_index]['replies'].append(req)
+    comment_ref.set(data)
+    return {'status' : 'ok!'}
 
 
 @app.route("/api/v1/user", methods=['GET'])
