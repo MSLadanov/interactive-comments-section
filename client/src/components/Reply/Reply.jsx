@@ -4,7 +4,7 @@ import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 import ReplyField from '../ReplyField/ReplyField'
 
-export default function Reply({reply, comments, setComments, userData, setUserData}) {
+export default function Reply({comment, reply, comments, setComments, userData, setUserData}) {
   const [showReplyField, setShowReplyField] = useState(false)
   return (
     <>
@@ -52,7 +52,7 @@ export default function Reply({reply, comments, setComments, userData, setUserDa
           </div>
       </div>
     </div>
-    {showReplyField && <ReplyField userData={userData} receiverData={reply.user}/>}
+    {showReplyField && <ReplyField id={comment.id} userData={userData} receiverData={reply.user}/>}
     </>
   )
 }
