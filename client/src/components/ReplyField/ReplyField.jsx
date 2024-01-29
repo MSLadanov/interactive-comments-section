@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 import './style.css'
 
@@ -13,11 +14,12 @@ export default function ReplyField({id, userData, receiverData}) {
         return dd + '.' + mm + '.' + yyyy
       }
       const [reply, setReply] = useState({
-        id,
+        id: uuidv4(),
         content: '',
         score: 0,
         createdAt: getFormattedDate(),
         replyingTo: receiverData.username,
+        replyingPostId: id,
         user:{
           image: {
             png: userData.image.png,
@@ -31,6 +33,12 @@ export default function ReplyField({id, userData, receiverData}) {
         console.log(reply)
         axios.post('http://127.0.0.1:5000/api/v1/reply',{
           ...reply
+        }).then((res) => {
+          console.log(res.data)
+        }).catch((err) => console.log(err))
+      }
+      function removeReply(){
+        axios.delete('http://127.0.0.1:5000/api/v1/reply',{
         }).then((res) => {
           console.log(res.data)
         }).catch((err) => console.log(err))

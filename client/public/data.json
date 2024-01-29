@@ -8,7 +8,7 @@
   },
   "comments": [
     {
-      "id": 1,
+      "id": "3c4fea87-4cc0-4223-b15d-6f80ae3db3fe",
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "14.01.2024",
       "score": 12,
@@ -22,7 +22,7 @@
       "replies": []
     },
     {
-      "id": 2,
+      "id": "bc3c1453-71f1-43f1-b88c-d0677df03bb7",
       "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
       "createdAt": "15.01.2024",
       "score": 5,
@@ -35,11 +35,12 @@
       },
       "replies": [
         {
-          "id": 3,
+          "id": "34c6d1b9-c89b-46ba-b025-738c1e58aa1d",
           "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
           "createdAt": "17.01.2024",
           "score": 4,
           "replyingTo": "maxblagun",
+          "replyingPostId": "bc3c1453-71f1-43f1-b88c-d0677df03bb7",
           "user": {
             "image": { 
               "png": "./images/avatars/image-ramsesmiron.png",
@@ -49,9 +50,10 @@
           }
         },
         {
-          "id": 4,
+          "id": "3fcba29c-b03b-45c5-ae24-04af4981d58a",
           "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
           "createdAt": "20.01.2024",
+          "replyingPostId": "bc3c1453-71f1-43f1-b88c-d0677df03bb7",
           "score": 2,
           "replyingTo": "ramsesmiron",
           "user": {

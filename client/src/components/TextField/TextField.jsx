@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import './style.css'
 
@@ -14,6 +15,7 @@ export default function TextField({userData}) {
     return dd + '.' + mm + '.' + yyyy
   }
   const [comment, setComment] = useState({
+    id: uuidv4(),
     content: '',
     score: 0,
     createdAt: getFormattedDate(),

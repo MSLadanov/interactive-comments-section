@@ -41,7 +41,7 @@ def add_reply():
     comment_ref = ref.child('comments')
     req = request.json
     data = ref.get()['comments']
-    comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
+    comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
     key_to_check = 'replies'
     if data[comment_index].get(key_to_check) is not None:
         print(f"Key '{key_to_check}' exists.")
@@ -53,6 +53,20 @@ def add_reply():
     comment_ref.set(data)
     return {'status' : 'ok!'}
 
+@app.route("/api/v1/comment", methods=['DELETE'])
+def remove_comment():
+    # if req contain replyingPostId, remove reply, else remove comment
+    return {
+        'status' : 'ok!',
+        'command': 'remove comment'
+    }
+
+# @app.route("/api/v1/reply", methods=['DELETE'])
+# def remove_reply():
+#     return {
+#         'status' : 'ok!',
+#         'command': 'remove reply'
+#     }
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
