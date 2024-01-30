@@ -61,13 +61,6 @@ def remove_comment():
         'command': 'remove comment'
     }
 
-# @app.route("/api/v1/reply", methods=['DELETE'])
-# def remove_reply():
-#     return {
-#         'status' : 'ok!',
-#         'command': 'remove reply'
-#     }
-
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
     data = ref.get()
