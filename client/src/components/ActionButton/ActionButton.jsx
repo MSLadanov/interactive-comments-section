@@ -6,10 +6,13 @@ export default function ActionButton({comment, user, comments, setComments, setS
   function remove(){
     // console.log(comment.id)
     console.log(comment)
-    axios.delete('http://127.0.0.1:5000/api/v1/comment',{
-    }).then((res) => {
-      console.log(res.data)
-    }).catch((err) => console.log(err))
+    console.log(comment)
+    axios.delete('http://127.0.0.1:5000/api/v1/comment', {
+      data: {
+        ...comment
+      }
+    }).then((res) => console.log(res.data)
+    ).catch((err) => console.log(err));
   }
   function edit(){
     // console.log(comment.id)
