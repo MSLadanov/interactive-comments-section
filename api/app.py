@@ -56,15 +56,20 @@ def add_reply():
 @app.route("/api/v1/comment", methods=['DELETE'])
 def remove_comment():
     # if req contain replyingPostId, remove reply, else remove comment
+    comment_ref = ref.child('comments')
+    data = ref.get()['comments']
     key_to_check = 'replyingPostId'
     req = request.json
-    print(req)
+    print(req['id'])
     res = ''
+    res_array = []
     if req.get(key_to_check) is not None:
         res = "Key " + key_to_check + " exists."
     else:
         res = "Key " + key_to_check + " does not exists."
-    return res
+        res_array = [i for i in data if not (i['id'] == req['id'])]
+        comment_ref.set(res_array)
+    return {'status' : 'ok!'}
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
