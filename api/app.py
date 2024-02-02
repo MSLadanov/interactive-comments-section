@@ -60,11 +60,17 @@ def remove_comment():
     data = ref.get()['comments']
     key_to_check = 'replyingPostId'
     req = request.json
-    print(req['id'])
+    # print(req['id'])
     res = ''
     res_array = []
     if req.get(key_to_check) is not None:
         res = "Key " + key_to_check + " exists."
+        print(req['replyingPostId'])
+        res_array = data
+        comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
+        replies_array = [i for i in data[comment_index]['replies'] if not (i['id'] == req['id'])]
+        res_array[comment_index]['replies'] = replies_array
+        comment_ref.set(res_array)
     else:
         res = "Key " + key_to_check + " does not exists."
         res_array = [i for i in data if not (i['id'] == req['id'])]
