@@ -7,6 +7,7 @@ import ReplyField from '../ReplyField/ReplyField'
 
 export default function Comment({comment, comments, setComments, userData, setUserData}) {
   const [showReplyField, setShowReplyField] = useState(false)
+  const [showEditField, setShowEditField] = useState(false)
   return (
     <>
       <div className='comment'>
@@ -30,12 +31,12 @@ export default function Comment({comment, comments, setComments, userData, setUs
               <h5>{comment.createdAt}</h5>
             </div>
             <div className="comment-actions">
-              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
+              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} setShowEditField={setShowEditField} />
             </div>
           </div>
-          <div className='comment-text'>
+          {!showEditField ? <div className='comment-text'>
             {comment.content}
-          </div>
+          </div> : <textarea></textarea>}
           <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>
@@ -49,7 +50,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
             </div>
           </div>
           <div className="comment-actions">
-              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} />
+              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} setShowEditField={setShowEditField} />
             </div>
           </div>
         </div>
