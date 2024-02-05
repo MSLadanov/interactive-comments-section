@@ -35,7 +35,17 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         <div className='comment-text'>
         <p>{'@' + reply.replyingTo}</p>
         <p>{' ' + reply.content}</p>
-      </div> : <textarea></textarea>}
+      </div> : 
+      <div className='reply-field edit-form'>
+        <div className='comment'>
+        <div className="text-field-input">
+                <textarea name="" id="" cols="30" rows="5" placeholder={' ' + reply.content}></textarea>
+            </div>
+            <div className="send-comment-btn">
+                <button type="button">UPDATE</button>
+            </div>
+        </div>
+      </div>}
         <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>

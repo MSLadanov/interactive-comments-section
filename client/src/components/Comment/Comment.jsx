@@ -36,7 +36,16 @@ export default function Comment({comment, comments, setComments, userData, setUs
           </div>
           {!showEditField ? <div className='comment-text'>
             {comment.content}
-          </div> : <textarea></textarea>}
+          </div> : <div className='reply-field edit-form'>
+        <div className='comment'>
+        <div className="text-field-input">
+                <textarea name="" id="" cols="30" rows="5" placeholder={comment.content}></textarea>
+        </div>
+        <div className="send-comment-btn">
+                <button type="button">UPDATE</button>
+            </div>
+        </div>
+      </div>}
           <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>

@@ -89,3 +89,7 @@
     color: hsl(0, 0%, 100%);
     border-radius: 8px;
 }
+
+.edit-form .comment{
+    padding: 0px;
+}
