@@ -87,7 +87,8 @@ def edit_comment():
     else:
         res_array = [i for i in data if not (i['id'] == req['id'])]
         # comment_ref.set(res_array)
-    return {'status' : 'ok!'}
+    # return {'status' : 'ok!'}
+    return req
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():

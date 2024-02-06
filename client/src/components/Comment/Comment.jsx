@@ -4,10 +4,30 @@ import Reply from '../Reply/Reply'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 import ReplyField from '../ReplyField/ReplyField'
+import axios from 'axios'
 
 export default function Comment({comment, comments, setComments, userData, setUserData}) {
   const [showReplyField, setShowReplyField] = useState(false)
   const [showEditField, setShowEditField] = useState(false)
+  const [currentComment, setCurrentComment] = useState({
+    ...comment
+  })
+  function getFormattedDate(){
+    const today = new Date()
+    const yyyy = today.getFullYear()
+    let mm = today.getMonth() + 1
+    let dd = today.getDate()
+    if (dd < 10) dd = '0' + dd
+    if (mm < 10) mm = '0' + mm
+    return dd + '.' + mm + '.' + yyyy
+  }
+  function editComment(){
+    axios.patch('http://127.0.0.1:5000/api/v1/comment', {
+        ...currentComment,
+        editedAt: getFormattedDate(),
+    }).then((res) => console.log(res.data)
+    ).catch((err) => console.log(err));
+  }
   return (
     <>
       <div className='comment'>
@@ -31,21 +51,29 @@ export default function Comment({comment, comments, setComments, userData, setUs
               <h5>{comment.createdAt}</h5>
             </div>
             <div className="comment-actions">
-              <ActionButton comment={comment} user={userData} comments={comments} setComments={setComments} setShowReplyField={setShowReplyField} setShowEditField={setShowEditField} />
+              <ActionButton 
+                comment={comment} 
+                user={userData} 
+                comments={comments} 
+                setComments={setComments} 
+                setShowReplyField={setShowReplyField} 
+                setShowEditField={setShowEditField}
+                currentElement={currentComment} />
             </div>
           </div>
           {!showEditField ? <div className='comment-text'>
             {comment.content}
-          </div> : <div className='reply-field edit-form'>
-        <div className='comment'>
-        <div className="text-field-input">
-                <textarea name="" id="" cols="30" rows="5" placeholder={comment.content}></textarea>
-        </div>
-        <div className="send-comment-btn">
-                <button type="button">UPDATE</button>
+          </div> : 
+        <div className='reply-field edit-form'>
+          <div className='comment'>
+            <div className="text-field-input">
+                <textarea name="" id="" cols="30" rows="5" defaultValue={comment.content}  onChange={(e) => setCurrentComment({...currentComment, content: e.target.value}) }></textarea>
+            </div>
+            <div className="send-comment-btn">
+                <button type="button" onClick={() => editComment()}>UPDATE</button>
             </div>
         </div>
-      </div>}
+        </div>}
           <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>

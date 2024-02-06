@@ -13,3 +13,16 @@
     color: hsl(238, 40%, 52%);
     cursor: pointer;
 }
+
+.edit-form .comment .text-field-input input{
+    margin-left: 10px;
+    font-weight: 800;
+    color: hsl(238, 40%, 52%);
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+.text-field-input div{
+    display: flex;
+}
