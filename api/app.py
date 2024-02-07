@@ -81,14 +81,26 @@ def edit_comment():
     if req.get(key_to_check) is not None:
         res_array = data
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
-        replies_array = [i for i in data[comment_index]['replies'] if not (i['id'] == req['id'])]
+        reply_array = data[comment_index]['replies']
+        reply_index = next((index for (index, d) in enumerate(reply_array) if d["id"] == req['id']), None)
+        reply_array[reply_index]['content'] = req['content']
+        reply_array[reply_index]['editedAt'] = req['editedAt']
+        res_array[comment_index]['replies'] = reply_array
+        comment_ref.set(res_array)
+        return {'status' : 'ok!'}
+        # print(comment_index)
+        # print(reply_index)
+        # res_array[comment_index][reply_index] = req
+        # return data[comment_index][reply_index]
+        # replies_array = [i for i in data[comment_index]['replies'] if not (i['id'] == req['id'])]
         # res_array[comment_index]['replies'] = replies_array
         # comment_ref.set(res_array)
     else:
-        res_array = [i for i in data if not (i['id'] == req['id'])]
+        comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
+        return data[comment_index]
+        # res_array = [i for i in data if not (i['id'] == req['id'])]
         # comment_ref.set(res_array)
-    # return {'status' : 'ok!'}
-    return req
+    return {'status' : 'ok!'}
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():

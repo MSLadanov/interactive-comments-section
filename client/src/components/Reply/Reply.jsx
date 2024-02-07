@@ -47,7 +47,8 @@ export default function Reply({comment, reply, comments, setComments, userData, 
             <img src={`/images/avatars/image-${reply.user.username}.png`} alt="user" />
             <h4>{reply.user.username}</h4>
             {reply.user.username === userData.username && <div className='current-user'>You</div>}
-            <h5>{reply.createdAt}</h5>
+            {reply.editedAt ? <h5>edited at: {reply.editedAt}</h5> : <h5>{reply.createdAt}</h5>}
+            {/* <h5>{reply.createdAt}</h5> */}
           </div>
           <ActionButton 
             comment={reply} 
