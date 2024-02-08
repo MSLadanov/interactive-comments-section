@@ -77,7 +77,6 @@ def edit_comment():
     data = ref.get()['comments']
     key_to_check = 'replyingPostId'
     req = request.json
-    res_array = []
     if req.get(key_to_check) is not None:
         res_array = data
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
@@ -88,19 +87,13 @@ def edit_comment():
         res_array[comment_index]['replies'] = reply_array
         comment_ref.set(res_array)
         return {'status' : 'ok!'}
-        # print(comment_index)
-        # print(reply_index)
-        # res_array[comment_index][reply_index] = req
-        # return data[comment_index][reply_index]
-        # replies_array = [i for i in data[comment_index]['replies'] if not (i['id'] == req['id'])]
-        # res_array[comment_index]['replies'] = replies_array
-        # comment_ref.set(res_array)
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
-        return data[comment_index]
-        # res_array = [i for i in data if not (i['id'] == req['id'])]
-        # comment_ref.set(res_array)
-    return {'status' : 'ok!'}
+        comments = data
+        comments[comment_index]['content'] = req['content']
+        comments[comment_index]['editedAt'] = req['editedAt']
+        comment_ref.set(comments)
+        return {'status' : 'ok!'}
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():

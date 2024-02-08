@@ -48,7 +48,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
               <img src={`/images/avatars/image-${comment.user.username}.png`} alt="user" />
               <h4>{comment.user.username}</h4>
               {comment.user.username === userData.username && <div className='current-user'>You</div>}
-              <h5>{comment.createdAt}</h5>
+              {comment.editedAt ? <h5>edited at: {comment.editedAt}</h5> : <h5>{comment.createdAt}</h5>}
             </div>
             <div className="comment-actions">
               <ActionButton 
