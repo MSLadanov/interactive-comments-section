@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 import './style.css'
 
-export default function ReplyField({id, userData, receiverData}) {
+export default function ReplyField({id, userData, receiverData, setComments, setShowReplyField}) {
     function getFormattedDate(){
         const today = new Date()
         const yyyy = today.getFullYear()
@@ -30,17 +30,17 @@ export default function ReplyField({id, userData, receiverData}) {
       })
       function addReply(){
         setReply({...reply, createdAt: getFormattedDate()})
-        console.log(reply)
         axios.post('http://127.0.0.1:5000/api/v1/reply',{
           ...reply
         }).then((res) => {
-          console.log(res.data)
+          setComments(res.data)
+          setShowReplyField(false)
         }).catch((err) => console.log(err))
       }
       function removeReply(){
         axios.delete('http://127.0.0.1:5000/api/v1/reply',{
         }).then((res) => {
-          console.log(res.data)
+          setComments(res.data)
         }).catch((err) => console.log(err))
       }
   return (

@@ -32,9 +32,8 @@ def add_comment():
     data = ref.get()['comments']
     data.append(req)
     comment_ref.set(data)
-    return {
-        'status' : 'ok!',
-    }
+    data = ref.get()['comments']
+    return data
 
 @app.route("/api/v1/reply", methods=['POST'])
 def add_reply():
@@ -51,7 +50,8 @@ def add_reply():
         data[comment_index].update({'replies':[]}) 
         data[comment_index]['replies'].append(req)
     comment_ref.set(data)
-    return {'status' : 'ok!'}
+    data = ref.get()['comments']
+    return data
 
 @app.route("/api/v1/comment", methods=['DELETE'])
 def remove_comment():
@@ -69,7 +69,8 @@ def remove_comment():
     else:
         res_array = [i for i in data if not (i['id'] == req['id'])]
         comment_ref.set(res_array)
-    return {'status' : 'ok!'}
+    data = ref.get()['comments']
+    return data
 
 @app.route("/api/v1/comment", methods=['PATCH'])
 def edit_comment():
@@ -86,14 +87,16 @@ def edit_comment():
         reply_array[reply_index]['editedAt'] = req['editedAt']
         res_array[comment_index]['replies'] = reply_array
         comment_ref.set(res_array)
-        return {'status' : 'ok!'}
+        data = ref.get()['comments']
+        return data
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
         comments = data
         comments[comment_index]['content'] = req['content']
         comments[comment_index]['editedAt'] = req['editedAt']
         comment_ref.set(comments)
-        return {'status' : 'ok!'}
+        data = ref.get()['comments']
+        return data
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():

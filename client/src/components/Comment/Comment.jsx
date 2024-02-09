@@ -25,7 +25,10 @@ export default function Comment({comment, comments, setComments, userData, setUs
     axios.patch('http://127.0.0.1:5000/api/v1/comment', {
         ...currentComment,
         editedAt: getFormattedDate(),
-    }).then((res) => console.log(res.data)
+    }).then((res) => {
+      setComments(res.data)
+      setShowEditField(false)
+    }
     ).catch((err) => console.log(err));
   }
   return (
@@ -95,7 +98,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
       <div className='replies-section'>
         <div className='vertical-line'></div>
         <div className='replies'>
-          {showReplyField && <ReplyField className='replies' id={comment.id} userData={userData} receiverData={comment.user}/>}
+          {showReplyField && <ReplyField className='replies' id={comment.id} userData={userData} receiverData={comment.user} setComments={setComments} setShowReplyField={setShowReplyField}/>}
           {comment.replies && comment.replies.map((reply) => <Reply comment={comment} key={reply.id} reply={reply} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData} />)}
         </div>
       </div>

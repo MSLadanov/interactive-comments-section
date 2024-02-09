@@ -4,29 +4,19 @@ import './style.css'
 
 export default function ActionButton({comment, user, comments, setComments, setShowReplyField, setShowEditField, currentElement}) {
   function remove(){
-    // console.log(comment.id)
-    // console.log(comment)
-    // console.log(comment)
     axios.delete('http://127.0.0.1:5000/api/v1/comment', {
       data: {
         ...comment
       }
-    }).then((res) => console.log(res.data)
+    }).then((res) => {
+      setComments(res.data)
+    }
     ).catch((err) => console.log(err));
   }
   function edit(){
     setShowEditField(prev => !prev)
-    // console.log(comment.id)
-    // axios.patch('http://127.0.0.1:5000/api/v1/comment', {
-    //   data: {
-    //     ...comment
-    //   }
-    // }).then((res) => console.log(res.data)
-    // ).catch((err) => console.log(err));
   }
   function reply(){
-    // console.log(comment.id)
-    // console.log(comment.user.username)
     setShowReplyField(prev => !prev)
   }
   if (user.username === comment.user.username){

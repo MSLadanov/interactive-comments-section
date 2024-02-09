@@ -24,7 +24,10 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     axios.patch('http://127.0.0.1:5000/api/v1/comment', {
         ...currentReply,
         editedAt: getFormattedDate(),
-    }).then((res) => console.log(res.data)
+    }).then((res) => {
+      setShowEditField(false)
+      setComments(res.data)
+    }
     ).catch((err) => console.log(err));
   }
   return (
@@ -95,7 +98,7 @@ export default function Reply({comment, reply, comments, setComments, userData, 
           </div>
       </div>
     </div>
-    {showReplyField && <ReplyField id={comment.id} userData={userData} receiverData={reply.user}/>}
+    {showReplyField && <ReplyField id={comment.id} userData={userData} receiverData={reply.user} setComments={setComments} setShowReplyField={setShowReplyField}/>}
     </>
   )
 }

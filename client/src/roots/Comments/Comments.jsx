@@ -10,7 +10,7 @@ export default function Comments() {
     return (
     <>
       {comments && <div className='comments'>{comments.map((comment) => <Comment key={comment.id} comment={comment} comments={comments} setComments={setComments} userData={userData} setUserData={setUserData}/>)}</div>}
-      <TextField userData={userData}/>
+      <TextField userData={userData} setComments={setComments}/>
     </>
   )}
 }

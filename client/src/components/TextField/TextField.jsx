@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import './style.css'
 
-export default function TextField({userData}) {
+export default function TextField({userData, setComments}) {
   function getFormattedDate(){
     const today = new Date()
     const yyyy = today.getFullYear()
@@ -29,11 +29,11 @@ export default function TextField({userData}) {
   })
   function addComment(){
     setComment({...comment, createdAt: getFormattedDate()})
-    console.log(comment)
     axios.post('http://127.0.0.1:5000/api/v1/comment',{
       ...comment
     }).then((res) => {
-      console.log(res.data)
+      setComments(res.data)
+      setComment({...comment, content: ''})
     }).catch((err) => console.log(err))
   }
   return (
@@ -43,7 +43,7 @@ export default function TextField({userData}) {
                 <img src={`/images/avatars/image-${userData.username}.png`} alt="user" />
             </div>
             <div className="text-field-input">
-                <textarea name="" id="" cols="30" rows="5" placeholder='Add a comment...' onChange={(e) => setComment({...comment, content: e.target.value}) }></textarea>
+                <textarea name="" id="" cols="30" rows="5" placeholder='Add a comment...' value={comment.content} onChange={(e) => setComment({...comment, content: e.target.value}) }></textarea>
             </div>
             <div className="send-comment-btn">
                 <button onClick={() => addComment()} type="button">SEND</button>
