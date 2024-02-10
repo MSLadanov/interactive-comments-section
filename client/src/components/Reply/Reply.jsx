@@ -35,6 +35,8 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     ).catch((err) => console.log(err));
   }
   function gradeHandler(){
+    let myGrade = reply.score.find((el) => el.username === userData.username)
+    myGrade ? myGrade = myGrade.result : myGrade = null
     const score = reply.score.reduce((acc, curr) => {
       if(curr.result === 'like'){
         return acc + 1
@@ -42,7 +44,7 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         return acc - 1
       }
     },0)
-    setGrades({...grades, grade: score})
+    setGrades({...grades, grade: score, yourGrade: myGrade})
   }
   useEffect(() => {
     gradeHandler()
@@ -52,13 +54,13 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     <div className='comment'>
       <div className='vote-section'>
         <div className='comment-vote'>
-          <div className="comment-like">
+          <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"}>
             <img src="/images/icon-plus.svg" alt="like" />
-          </div>
+          </button>
           <div className="comment-likes">{grades.grade}</div>
-          <div className="comment-dislikes">
+          <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"}>
             <img src="/images/icon-minus.svg" alt="dislike" />
-          </div>
+          </button>
         </div>
       </div>
       <div className='comment-section'>

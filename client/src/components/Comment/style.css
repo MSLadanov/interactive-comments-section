@@ -43,6 +43,9 @@
 }
 
 .comment-like{
+    border: none;
+    cursor: pointer;
+    background-color: hsl(239, 57%, 95%);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     height: 35px;
@@ -55,7 +58,10 @@
     width: 40px;
 }
 
-.comment-dislikes{
+.comment-dislike{
+    border: none;
+    cursor: pointer;
+    background-color: hsl(239, 57%, 95%);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     height: 35px;
@@ -92,4 +98,8 @@
 
 .edit-form .comment{
     padding: 0px;
+}
+
+.toggled{
+    background-color: hsl(240, 65%, 91%);
 }
