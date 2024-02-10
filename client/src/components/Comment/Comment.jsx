@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Reply from '../Reply/Reply'
 import ActionButton from '../ActionButton/ActionButton'
@@ -12,6 +12,10 @@ export default function Comment({comment, comments, setComments, userData, setUs
   const [currentComment, setCurrentComment] = useState({
     ...comment
   })
+  const [grades, setGrades] = useState({
+    yourGrade: null, 
+    grade: 0,
+  }) 
   function getFormattedDate(){
     const today = new Date()
     const yyyy = today.getFullYear()
@@ -31,6 +35,19 @@ export default function Comment({comment, comments, setComments, userData, setUs
     }
     ).catch((err) => console.log(err));
   }
+  function gradeHandler(){
+    const score = comment.score.reduce((acc, curr) => {
+      if(curr.result === 'like'){
+        return acc + 1
+      } else if (curr.result === 'dislike'){
+        return acc - 1
+      }
+    },0)
+    setGrades({...grades, grade: score})
+  }
+  useEffect(() => {
+    gradeHandler()
+  }, [])
   return (
     <>
       <div className='comment'>
@@ -39,7 +56,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
             <div className="comment-like">
               <img src="/images/icon-plus.svg" alt="like" />
             </div>
-            <div className="comment-likes">{comment.score}</div>
+            <div className="comment-likes">{grades.grade}</div>
             <div className="comment-dislikes">
               <img src="/images/icon-minus.svg" alt="dislike" />
             </div>
@@ -83,7 +100,7 @@ export default function Comment({comment, comments, setComments, userData, setUs
               <div className="comment-like">
                 <img src="/images/icon-plus.svg" alt="like" />
               </div>
-              <div className="comment-likes">{comment.score}</div>
+              <div className="comment-likes">{grades.grade}</div>
               <div className="comment-dislikes">
                 <img src="/images/icon-minus.svg" alt="dislike" />
               </div>

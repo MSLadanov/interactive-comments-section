@@ -12,7 +12,16 @@
       "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
       "createdAt": "14.01.2024",
       "editedAt":"",
-      "score": 12,
+      "score": [
+        {
+          "username": "maxblagun",
+          "result": "like"
+        },
+        {
+          "username": "ramsesmiron",
+          "result": "like"
+        }
+      ],
       "user": {
         "image": { 
           "png": "./images/avatars/image-amyrobson.png",
@@ -27,7 +36,16 @@
       "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
       "createdAt": "15.01.2024",
       "editedAt":"",
-      "score": 5,
+      "score": [
+        {
+          "username": "juliusomo",
+          "result": "like"
+        },
+        {
+          "username": "amyrobson",
+          "result": "like"
+        }
+      ],
       "user": {
         "image": { 
           "png": "./images/avatars/image-maxblagun.png",
@@ -41,7 +59,12 @@
           "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
           "createdAt": "17.01.2024",
           "editedAt":"",
-          "score": 4,
+          "score": [
+            {
+              "username": "juliusomo",
+              "result": "dislike"
+            }
+          ],
           "replyingTo": "maxblagun",
           "replyingPostId": "bc3c1453-71f1-43f1-b88c-d0677df03bb7",
           "user": {
@@ -58,7 +81,20 @@
           "createdAt": "20.01.2024",
           "editedAt":"",
           "replyingPostId": "bc3c1453-71f1-43f1-b88c-d0677df03bb7",
-          "score": 2,
+          "score": [
+            {
+              "username": "amyrobson",
+              "result": "like"
+            },
+            {
+              "username": "maxblagun",
+              "result": "like"
+            },
+            {
+              "username": "ramsesmiron",
+              "result": "dislike"
+            }
+          ],
           "replyingTo": "ramsesmiron",
           "user": {
             "image": { 

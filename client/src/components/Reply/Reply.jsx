@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ActionButton from '../ActionButton/ActionButton'
 import './style.css'
 import ReplyField from '../ReplyField/ReplyField'
@@ -11,6 +11,10 @@ export default function Reply({comment, reply, comments, setComments, userData, 
   const [currentReply, setCurrentReply] = useState({
     ...reply
   })
+  const [grades, setGrades] = useState({
+    yourGrade: null, 
+    grade: 0,
+  }) 
   function getFormattedDate(){
     const today = new Date()
     const yyyy = today.getFullYear()
@@ -30,6 +34,19 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     }
     ).catch((err) => console.log(err));
   }
+  function gradeHandler(){
+    const score = reply.score.reduce((acc, curr) => {
+      if(curr.result === 'like'){
+        return acc + 1
+      } else if (curr.result === 'dislike'){
+        return acc - 1
+      }
+    },0)
+    setGrades({...grades, grade: score})
+  }
+  useEffect(() => {
+    gradeHandler()
+  }, [])
   return (
     <>
     <div className='comment'>
@@ -38,7 +55,7 @@ export default function Reply({comment, reply, comments, setComments, userData, 
           <div className="comment-like">
             <img src="/images/icon-plus.svg" alt="like" />
           </div>
-          <div className="comment-likes">{reply.score}</div>
+          <div className="comment-likes">{grades.grade}</div>
           <div className="comment-dislikes">
             <img src="/images/icon-minus.svg" alt="dislike" />
           </div>
@@ -86,7 +103,7 @@ export default function Reply({comment, reply, comments, setComments, userData, 
               <div className="comment-like">
                 <img src="/images/icon-plus.svg" alt="like" />
               </div>
-              <div className="comment-likes">{reply.score}</div>
+              <div className="comment-likes">{grades.grade}</div>
               <div className="comment-dislikes">
                 <img src="/images/icon-minus.svg" alt="dislike" />
               </div>
