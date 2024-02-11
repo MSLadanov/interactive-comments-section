@@ -98,6 +98,21 @@ def edit_comment():
         data = ref.get()['comments']
         return data
 
+@app.route("/api/v1/comment/like", methods=['PATCH'])
+def like_comment():
+    comment_ref = ref.child('comments')
+    data = ref.get()['comments']
+    key_to_check = 'replyingPostId'
+    req = request.json
+    if req.get(key_to_check) is not None:
+        comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
+        score_array = data[comment_index]['score']
+        return score_array
+    else:
+        comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
+        score_array = data[comment_index]['score']
+        return score_array
+
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
     data = ref.get()

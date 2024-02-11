@@ -107,7 +107,7 @@
         display: flex;
     }
     /* */
-    .comment-like{
+    .comment-like {
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
         border-top-right-radius: 0px;
@@ -121,12 +121,15 @@
         width: 60px;
     }
     
-    .comment-dislikes{
-        border-top-right-radius: 8px;
+    .comment-dislike {
+        border: none;
+        cursor: pointer;
+        background-color: hsl(239, 57%, 95%);
         border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
         border-bottom-left-radius: 0px;
         height: 40px;
-        width: 35px;
+        width: 40px;
     }
 
      /* */

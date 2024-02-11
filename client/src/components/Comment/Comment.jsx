@@ -47,6 +47,15 @@ export default function Comment({comment, comments, setComments, userData, setUs
     },0)
     setGrades({...grades, grade: score, yourGrade: myGrade})
   }
+  function likeComment(){
+    axios.patch('http://127.0.0.1:5000/api/v1/comment/like', {
+        ...currentComment,
+    }).then((res) => {
+      console.log(res.data)
+      // setComments(res.data)
+    }
+    ).catch((err) => console.log(err));
+  }
   useEffect(() => {
     gradeHandler()
   }, [])
@@ -99,13 +108,13 @@ export default function Comment({comment, comments, setComments, userData, setUs
           <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>
-              <div className="comment-like">
+              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"}>
                 <img src="/images/icon-plus.svg" alt="like" />
-              </div>
+              </button>
               <div className="comment-likes">{grades.grade}</div>
-              <div className="comment-dislikes">
+              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"}>
                 <img src="/images/icon-minus.svg" alt="dislike" />
-              </div>
+              </button>
             </div>
           </div>
           <div className="comment-actions">

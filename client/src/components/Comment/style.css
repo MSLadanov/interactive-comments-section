@@ -101,5 +101,5 @@
 }
 
 .toggled{
-    background-color: hsl(240, 65%, 91%);
+    background-color: hsl(240, 65%, 91%) !important;
 }

@@ -102,13 +102,13 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>
-              <div className="comment-like">
-                <img src="/images/icon-plus.svg" alt="like" />
-              </div>
+              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"}>
+              <img src="/images/icon-plus.svg" alt="like" />
+              </button>
               <div className="comment-likes">{grades.grade}</div>
-              <div className="comment-dislikes">
+              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"}>
                 <img src="/images/icon-minus.svg" alt="dislike" />
-              </div>
+              </button>
             </div>
           </div>
           <div className="comment-actions">
