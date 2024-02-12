@@ -35,7 +35,7 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     ).catch((err) => console.log(err));
   }
   function gradeHandler(){
-    let myGrade = reply.score.find((el) => el.username === userData.username)
+    let myGrade = reply.score.find((el) => el.userId === userData.userId)
     myGrade ? myGrade = myGrade.result : myGrade = null
     const score = reply.score.reduce((acc, curr) => {
       if(curr.result === 'like'){
@@ -46,6 +46,19 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     },0)
     setGrades({...grades, grade: score, yourGrade: myGrade})
   }
+  function likeComment(username, userId, result){
+    axios.patch('http://127.0.0.1:5000/api/v1/comment/like', {
+        id: currentReply.id,
+        replyingPostId: currentReply.replyingPostId,
+        username,
+        userId,
+        result
+    }).then((res) => {
+      console.log(res.data)
+      // setComments(res.data)
+    }
+    ).catch((err) => console.log(err));
+  }
   useEffect(() => {
     gradeHandler()
   }, [])
@@ -54,11 +67,11 @@ export default function Reply({comment, reply, comments, setComments, userData, 
     <div className='comment'>
       <div className='vote-section'>
         <div className='comment-vote'>
-          <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"}>
+          <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"} onClick={() => likeComment(userData.username, userData.userId, 'like')}>
             <img src="/images/icon-plus.svg" alt="like" />
           </button>
           <div className="comment-likes">{grades.grade}</div>
-          <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"}>
+          <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"} onClick={() => likeComment(userData.username, userData.userId, 'dislike')}>
             <img src="/images/icon-minus.svg" alt="dislike" />
           </button>
         </div>
@@ -102,11 +115,11 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>
-              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"}>
+              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"} onClick={() => likeComment(userData.username, userData.userId, 'like')}>
               <img src="/images/icon-plus.svg" alt="like" />
               </button>
               <div className="comment-likes">{grades.grade}</div>
-              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"}>
+              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"} onClick={() => likeComment(userData.username, userData.userId, 'dislike')}>
                 <img src="/images/icon-minus.svg" alt="dislike" />
               </button>
             </div>

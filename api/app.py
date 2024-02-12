@@ -104,6 +104,7 @@ def like_comment():
     data = ref.get()['comments']
     key_to_check = 'replyingPostId'
     req = request.json
+    print(req)
     if req.get(key_to_check) is not None:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
         score_array = data[comment_index]['score']
