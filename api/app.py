@@ -4,6 +4,7 @@ from flask_cors import CORS, cross_origin
 import firebase_admin
 from firebase_admin import db
 from dotenv import load_dotenv
+from operator import itemgetter
 
 load_dotenv()
 
@@ -106,12 +107,22 @@ def like_comment():
     req = request.json
     print(req)
     if req.get(key_to_check) is not None:
+        res_array = data
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
-        score_array = data[comment_index]['score']
-        return score_array
+        reply_array = data[comment_index]['replies']
+        reply_index = next((index for (index, d) in enumerate(reply_array) if d["id"] == req['id']), None)
+        # if ([element for element in score_array if element['userId'] == req['userId']]):
+        #     return {'result': 'exist'}
+        # else:
+        #     return {'result': 'not exist'}
+        return reply_array[reply_index]['score']
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
         score_array = data[comment_index]['score']
+        # if ([element for element in score_array if element['userId'] == req['userId']]):
+        #     return {'result': 'exist'}
+        # else:
+        #     return {'result': 'not exist'}
         return score_array
 
 @app.route("/api/v1/user", methods=['GET'])
