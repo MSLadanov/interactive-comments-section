@@ -105,10 +105,12 @@ def like_comment():
     data = ref.get()['comments']
     key_to_check = 'replyingPostId'
     req = request.json
-    # print(req)
-    # check if it reply
+    grade_dict = {
+        "username": req['username'],
+        "userId": req['userId'],
+        "result": req['result']
+    }
     if req.get(key_to_check) is not None:
-        res_array = data
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
         reply_array = data[comment_index]['replies']
         reply_index = next((index for (index, d) in enumerate(reply_array) if d["id"] == req['id']), None)
@@ -116,17 +118,22 @@ def like_comment():
         # check if reply already liked or disliked by user
         if not any(d['userId'] == req['userId'] for d in score_array):
             # add new dict with result in score array
-            return {'result': 'not exist'}
+            data[comment_index]['replies'][reply_index]['score'].append(grade_dict)
+            # READY!
+            return data
         else:
             # user already liked or disliked this reply
             score_index = next((index for (index, d) in enumerate(score_array) if d["userId"] == req['userId']), None)
             score = score_array[score_index]
             if score['result'] == req['result']:
                 # new grade and old grade are equal - remove grade
-                return {'result' : 'equal'}
+                data[comment_index]['replies'][reply_index]["score"] = [i for i in data[comment_index]['replies'][reply_index]["score"] if not (i['userId'] == req['userId'])]
+                # READY!
+                return data
             else:
                 # new grade and old grade is not equal - reverse grade
-                return {'result' : 'not equal'}
+                data[comment_index]['replies'][reply_index]['score'][score_index] = grade_dict
+                return data
     # check if it comment
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
@@ -134,17 +141,22 @@ def like_comment():
         # check if comment already liked or disliked by user
         if not any(d['userId'] == req['userId'] for d in score_array):
             # add new dict with result in score array
-            return {'result': 'not exist'}
+            data[comment_index]['score'].append(grade_dict)
+            # READY!
+            return data
         else:
         # user already liked or disliked this comment
             score_index = next((index for (index, d) in enumerate(score_array) if d["userId"] == req['userId']), None)
             score = score_array[score_index]
             if score['result'] == req['result']:
                 # new grade and old grade are equal - remove grade
-                return {'result' : 'equal'}
+                data[comment_index]["score"] = [i for i in data[comment_index]["score"] if not (i['userId'] == req['userId'])]
+                # READY!
+                return data
             else:
                 # new grade and old grade is not equal - reverse grade
-                return {'result' : 'not equal'}
+                data[comment_index]['score'][score_index] = grade_dict
+                return data
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
