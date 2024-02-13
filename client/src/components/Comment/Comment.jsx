@@ -111,11 +111,11 @@ export default function Comment({comment, comments, setComments, userData, setUs
           <div className="mobile-comment-menu">
             <div className='vote-section'>
             <div className='comment-vote'>
-              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"} onClick={() => likeComment(userData.username, 'like')}>
+              <button className={grades.yourGrade === "like" ? "comment-like toggled" : "comment-like"} onClick={() => likeComment(userData.username, userData.userId, 'like')}>
                 <img src="/images/icon-plus.svg" alt="like" />
               </button>
               <div className="comment-likes">{grades.grade}</div>
-              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"} onClick={() => likeComment(userData.username, 'dislike')}>
+              <button className={grades.yourGrade === "dislike" ? "comment-dislike toggled" : "comment-dislike"} onClick={() => likeComment(userData.username, userData.userId, 'dislike')}>
                 <img src="/images/icon-minus.svg" alt="dislike" />
               </button>
             </div>
