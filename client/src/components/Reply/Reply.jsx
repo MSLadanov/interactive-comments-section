@@ -55,13 +55,13 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         result
     }).then((res) => {
       console.log(res.data)
-      // setComments(res.data)
+      setComments(res.data)
     }
     ).catch((err) => console.log(err));
   }
   useEffect(() => {
     gradeHandler()
-  }, [])
+  }, [comment])
   return (
     <>
     <div className='comment'>
