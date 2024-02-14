@@ -36,15 +36,18 @@ export default function Comment({comment, comments, setComments, userData, setUs
     ).catch((err) => console.log(err));
   }
   function gradeHandler(){
-    let myGrade = comment.score.find((el) => el.userId === userData.userId)
-    myGrade ? myGrade = myGrade.result : myGrade = null
-    const score = comment.score.reduce((acc, curr) => {
+    let score = 0
+    let myGrade = null
+    if(comment.score !== undefined){
+      myGrade = comment.score.find((el) => el.userId === userData.userId)
+      myGrade ? myGrade = myGrade.result : myGrade = null
+      score = comment.score.reduce((acc, curr) => {
       if(curr.result === 'like'){
-        return acc + 1
+          return acc + 1
       } else if (curr.result === 'dislike'){
-        return acc - 1
-      }
-    },0)
+          return acc - 1
+        }},0)
+    } 
     setGrades({...grades, grade: score, yourGrade: myGrade})
   }
   function likeComment(username, userId, result){

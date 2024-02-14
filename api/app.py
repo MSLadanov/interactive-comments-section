@@ -99,6 +99,9 @@ def edit_comment():
         data = ref.get()['comments']
         return data
 
+
+## SOLVE THE PROBLEM WHEN 0 LIKES AND DISLIKES, SCORE ARRAY IS DISAPPEARING !!!
+    
 @app.route("/api/v1/comment/like", methods=['PATCH'])
 def like_comment():
     comment_ref = ref.child('comments')
@@ -120,20 +123,31 @@ def like_comment():
             # add new dict with result in score array
             data[comment_index]['replies'][reply_index]['score'].append(grade_dict)
             # READY!
+            comment_ref.set(data)
+            data = ref.get()['comments']
             return data
+            # return {'case' : '1'}
         else:
             # user already liked or disliked this reply
             score_index = next((index for (index, d) in enumerate(score_array) if d["userId"] == req['userId']), None)
             score = score_array[score_index]
             if score['result'] == req['result']:
                 # new grade and old grade are equal - remove grade
-                data[comment_index]['replies'][reply_index]["score"] = [i for i in data[comment_index]['replies'][reply_index]["score"] if not (i['userId'] == req['userId'])]
+                filter_by = {"userId":req['userId']}
+                result = [dic for dic in data[comment_index]['replies'][reply_index]["score"] if all(key in dic and dic[key] != val for key, val in filter_by.items())]
+                data[comment_index]['replies'][reply_index]["score"] = result
                 # READY!
+                comment_ref.set(data)
+                data = ref.get()['comments']
                 return data
+                # return {'case' : '2'}
             else:
                 # new grade and old grade is not equal - reverse grade
                 data[comment_index]['replies'][reply_index]['score'][score_index] = grade_dict
+                comment_ref.set(data)
+                data = ref.get()['comments']
                 return data
+                # return {'case' : '3'}
     # check if it comment
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
@@ -143,20 +157,31 @@ def like_comment():
             # add new dict with result in score array
             data[comment_index]['score'].append(grade_dict)
             # READY!
+            comment_ref.set(data)
+            data = ref.get()['comments']
             return data
+            # return {'case' : '4'}
         else:
         # user already liked or disliked this comment
             score_index = next((index for (index, d) in enumerate(score_array) if d["userId"] == req['userId']), None)
             score = score_array[score_index]
             if score['result'] == req['result']:
                 # new grade and old grade are equal - remove grade
-                data[comment_index]["score"] = [i for i in data[comment_index]["score"] if not (i['userId'] == req['userId'])]
+                filter_by = {"userId":req['userId']}
+                result = [dic for dic in data[comment_index]["score"] if all(key in dic and dic[key] != val for key, val in filter_by.items())]
+                data[comment_index]["score"] = result
                 # READY!
+                comment_ref.set(data)
+                data = ref.get()['comments']
                 return data
+                # return {'case' : '5'}
             else:
                 # new grade and old grade is not equal - reverse grade
                 data[comment_index]['score'][score_index] = grade_dict
+                comment_ref.set(data)
+                data = ref.get()['comments']
                 return data
+                # return {'case' : '6'}
 
 @app.route("/api/v1/user", methods=['GET'])
 def get_user():
