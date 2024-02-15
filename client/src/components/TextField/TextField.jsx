@@ -17,7 +17,7 @@ export default function TextField({userData, setComments}) {
   const [comment, setComment] = useState({
     id: uuidv4(),
     content: '',
-    score: 0,
+    score: [],
     createdAt: getFormattedDate(),
     user:{
       image: {

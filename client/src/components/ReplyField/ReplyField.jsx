@@ -16,7 +16,7 @@ export default function ReplyField({id, userData, receiverData, setComments, set
       const [reply, setReply] = useState({
         id: uuidv4(),
         content: '',
-        score: 0,
+        score: [],
         createdAt: getFormattedDate(),
         replyingTo: receiverData.username,
         replyingPostId: id,
