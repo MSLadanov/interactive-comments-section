@@ -117,6 +117,10 @@ def like_comment():
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['replyingPostId']), None)
         reply_array = data[comment_index]['replies']
         reply_index = next((index for (index, d) in enumerate(reply_array) if d["id"] == req['id']), None)
+        # initial array if empty
+        if not "score" in data[comment_index]['replies'][reply_index]:
+            new_list = {'score': []}
+            data[comment_index]['replies'][reply_index].update(new_list)
         score_array = reply_array[reply_index]['score']
         # check if reply already liked or disliked by user
         if not any(d['userId'] == req['userId'] for d in score_array):
@@ -151,6 +155,10 @@ def like_comment():
     # check if it comment
     else:
         comment_index = next((index for (index, d) in enumerate(data) if d["id"] == req['id']), None)
+        # initial array if empty
+        if not "score" in data[comment_index]:
+            new_list = {'score': []}
+            data[comment_index].update(new_list)
         score_array = data[comment_index]['score']
         # check if comment already liked or disliked by user
         if not any(d['userId'] == req['userId'] for d in score_array):

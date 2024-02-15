@@ -58,7 +58,6 @@ export default function Reply({comment, reply, comments, setComments, userData, 
         userId,
         result
     }).then((res) => {
-      console.log(res.data)
       setComments(res.data)
     }
     ).catch((err) => console.log(err));
